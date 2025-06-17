@@ -29,35 +29,14 @@ namespace Academy
 		{
 			Console.WriteLine($"GDestructor:\t {this.GetHashCode()}");
 		}
-		public void Info()
+		public override void Info()
 		{
 			base.Info();
 			Console.WriteLine($"{Subject}");
 		}
-
-		/*public string Group { get; set; }
-		public string Graduate_work { get; set; }
-		public Graduate
-			(
-			string lastName, string firstName, int age,
-			string speciality, string group, string graduate_work
-			) : base(lastName, firstName, age)
+		public override string ToString()
 		{
-			Speciality = speciality;
-			Group = group;
-			Graduate_work = graduate_work;
-			Console.WriteLine($"TConstructor:\t {this.GetHashCode()}");
+			return base.ToString() + $", {Subject}";
 		}
-
-		~Graduate()
-		{
-			Console.WriteLine($"TDestructor:\t {this.GetHashCode()}");
-		}
-
-		public void Info()
-		{
-			base.Info();
-			Console.WriteLine($"{Speciality} {Group} {Graduate_work}");
-		}*/
 	}
 }

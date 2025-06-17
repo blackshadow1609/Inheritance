@@ -46,10 +46,14 @@ namespace Academy
 			Console.WriteLine($"SDestructor:\t {this.GetHashCode()}");
 		}
 
-		public void Info()
+		public override void Info()
 		{
 			base.Info();
 			Console.WriteLine($"{Speciality} {Group} {Rating} {Attendance}");
+		}
+		public override string ToString()
+		{
+			return base.ToString() + $" {Speciality} {Group} {Rating} {Attendance}";
 		}
 	}
 }

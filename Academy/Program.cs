@@ -42,18 +42,23 @@ namespace Academy
 			Console.WriteLine(delimiter); 
 #endif
 
-
+			//Generalization (Обобщение): 
 			Human[] group = new Human[]
 				{
+				//Upcast - Преобразование объекта дочернего класса в объект базового класса
 				new Student("Pinkman", "Jessie", 22, "Chemistry", "WW-220", 95, 96),
 				new Teacher("White", "Walter", 50, "Chemistry", 25),
 				new Graduate("Varcetty", "Tommy", 30,"Theft", "Vice", 95, 98, "How to make money"),
 				new Graduate("Schreder", "Hank", 40, "Criminalistic", "OBN", 70, 80, "How to catch Heizenberg"),
 				new Teacher("Diaz", "Ricardo", 50, "Weapons distribution", 20),
 				};
-			for (int i=0;  i<group.Length; i++)
+
+			//Specialization (Уточнение): 
+			for (int i = 0;  i < group.Length; i++)
 			{
+				Console.WriteLine(group[i]);
 				group[i].Info();
+				Console.WriteLine(delimiter);
 			}
 
 		}
@@ -63,12 +68,3 @@ namespace Academy
 }
 	
 
-
-
-		//Graduate graduate = new Graduate("Pinkman", "Jessie", 35, "Chemistry", "WW-220", "Organic chemistry");
-		//graduate.Info();
-		//Console.WriteLine(delimiter); //Добавленный дипломник
-
-		//Specialist specialist = new Specialist("Lomax", "Kevin", 30, "Lawyer", 10);
-		//specialist.Info();
-		//Console.WriteLine(delimiter); //Добавленный специалист
