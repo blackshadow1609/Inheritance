@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;    //Input/Output
+using System.Diagnostics;  //для запуска других программ при помощи класса 'Process';
+
 
 namespace Academy
 {
 	internal class Program
 	{
-		static readonly string delimiter = "\n--------------------------------------------------------\n";
+		static readonly string delimiter = "\n----------------------------------------------------------------------------\n";
 		static void Main(string[] args)
 		{
 #if INHERITANCE
@@ -57,10 +60,23 @@ namespace Academy
 			for (int i = 0;  i < group.Length; i++)
 			{
 				Console.WriteLine(group[i]);
-				group[i].Info();
+				//group[i].Info();
 				Console.WriteLine(delimiter);
 			}
 
+			StreamWriter sw = new StreamWriter("Group.txt");    //Создание и открытие потока
+
+			for (int i = 0; i < group.Length; i++)
+			{
+				sw.WriteLine(group[i].ToFileString());
+			}
+
+			sw.Close();	// Потоки обязательно нужно закрывать
+
+			Process.Start("notepad.exe", "Group.txt");
+
+
+			//*.csv - Comma Separated Values (Значения разделенные запятой); 
 		}
 
 	}
