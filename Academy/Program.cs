@@ -6,7 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;    //Input/Output
-using System.Diagnostics;  //для запуска других программ при помощи класса 'Process';
+using System.Diagnostics;
+using System.Linq.Expressions;  //для запуска других программ при помощи класса 'Process';
 
 
 namespace Academy
@@ -63,8 +64,9 @@ namespace Academy
 			Save(group, "group.csv");  
 #endif
 			
-			Human[] group = Load("group.csv");
+			Human[] group = Load("base.csv");
 			Print(group);
+			Console.WriteLine("DONE");
 		}
 
 		public static void Print(Human[] group)
@@ -97,18 +99,25 @@ namespace Academy
 		{
 			List<Human> group = new List<Human>();
 
-			StreamReader sr = new StreamReader(filename);
-
-			while(!sr.EndOfStream)
+			try
 			{
-				string buffer = sr.ReadLine();
-				//Console.WriteLine(buffer);
-				Human human = HumanFactory(buffer.Split(':').First());
-				human.Init(buffer.Split(':').Last().Split(','));
-				group.Add(human);
-			}
+				StreamReader sr = new StreamReader(filename);
+			
+				while (!sr.EndOfStream)
+				{
+					string buffer = sr.ReadLine();
+					//Console.WriteLine(buffer);
+					Human human = HumanFactory(buffer.Split(':').First());
+					human.Init(buffer.Split(':').Last().Split(','));
+					group.Add(human);
+				}
 
-			sr.Close();
+				sr.Close();
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+			}
 
 			return group.ToArray();
 		}
