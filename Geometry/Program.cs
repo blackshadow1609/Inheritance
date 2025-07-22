@@ -42,14 +42,14 @@ namespace Geometry
 
 			Shape[] shapes = new Shape[]
 				{
-					new Square(2000, 300, 0, 152, Color.Red),
-					new Rectangle(300, 200, 400, 50, 3, Color.AliceBlue),
-					new Circle(75, 500, 50, 3, Color.Yellow),
-					new EquilateralTriangle(100, 500, 400, 3, Color.Green)
+					new Square(300, 300, 100, 3, Color.Red),
+					new Rectangle(300, 100, 300, 200, 3, Color.AliceBlue),
+					new Circle(100, 400, 200, 3, Color.Yellow),
+					new EquilateralTriangle(200, 400, 200, 3, Color.Green)
 				};
 			for (int i = 0; i < shapes.Length; i++)
 			{
-				if (shapes[i] is Triangle) shapes[i].Draw(e);
+				if (shapes[i] is Square) shapes[i].Draw(e);
 			}
 
 		}
