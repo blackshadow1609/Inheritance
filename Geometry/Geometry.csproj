@@ -54,6 +54,7 @@
     <Compile Include="RightTriangle.cs" />
     <Compile Include="Shape.cs" />
     <Compile Include="Square.cs" />
+    <Compile Include="Triangle .cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
