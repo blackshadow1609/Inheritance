@@ -1,4 +1,5 @@
-﻿using System;
+﻿//#define ABSTRACT_BASE_CLASS
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace Geometry
 	{
 		static void Main(string[] args)
 		{
-			
+
 			IntPtr hwnd = GetConsoleWindow();
 			Graphics graphics = Graphics.FromHwnd(hwnd);
 			System.Drawing.Rectangle window_rect = new System.Drawing.Rectangle
@@ -23,9 +24,10 @@ namespace Geometry
 				);
 			PaintEventArgs e = new PaintEventArgs(graphics, window_rect);
 			//e.Graphics.DrawRectangle(new Pen(Color.Green, 2), 500, 500, 100, 100);
+#if ABSTRACT_BASE_CLASS
 
 			//Shape shape = new Shape();	//Невозможно создать экземпляр абстрактного класса;
-			Square square = new Square(2000, 300, 0, 152,  Color.Red);
+			Square square = new Square(2000, 300, 0, 152, Color.Red);
 			square.Info(e);
 
 			Rectangle rectangle = new Rectangle(300, 200, 400, 50, 3, Color.AliceBlue);
@@ -35,9 +37,23 @@ namespace Geometry
 			circle.Info(e);
 
 			EquilateralTriangle e_triangle = new EquilateralTriangle(100, 500, 400, 3, Color.Green);
-			e_triangle.Info(e);
+			e_triangle.Info(e); 
+#endif
+
+			Shape[] shapes = new Shape[]
+				{
+					new Square(2000, 300, 0, 152, Color.Red),
+					new Rectangle(300, 200, 400, 50, 3, Color.AliceBlue),
+					new Circle(75, 500, 50, 3, Color.Yellow),
+					new EquilateralTriangle(100, 500, 400, 3, Color.Green)
+				};
+			for (int i = 0; i < shapes.Length; i++)
+			{
+				if (shapes[i] is Triangle) shapes[i].Draw(e);
+			}
 
 		}
+
 		[DllImport("kernel32.dll")]
 		public static extern IntPtr GetConsoleWindow();
 		[DllImport("kernel32.dll")]

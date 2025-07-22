@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Geometry
 {
-	internal class Circle : Shape
+	internal class Circle : Shape, IHaveDiameter
 	{
 		double radius;
 		public double Radius
@@ -19,27 +19,32 @@ namespace Geometry
 		public Circle(double radius, int start_x, int start_y, int line_width, Color color)
 			: base (start_x, start_y, line_width, color)
 		{
-			this.radius = radius;
+			Radius = radius;
 		}
-
+		public double GetDiameter()
+		{
+			return Radius * 2;
+		}
 		public override double GetArea()
 		{
 			return Math.PI * Math.Pow(Radius, 2);
 		}
 		public override double GetPerimeter()
 		{
-			return 2 * Math.PI * Radius;
+			return Math.PI * GetDiameter();
+			//return 2 * Math.PI * Radius;
 		}
 		public override void Draw(PaintEventArgs e)
 		{
 			Pen pen = new Pen(Color, LineWidth);
-			e.Graphics.DrawEllipse(pen, StartX, StartY, (float)Radius * 2, (float)Radius * 2);
+			e.Graphics.DrawEllipse(pen, StartX, StartY, (float)GetDiameter(), (float)GetDiameter());
 		}
 		public override void Info(PaintEventArgs e)
 		{
 			Console.WriteLine();
 			Console.WriteLine(GetType());
 			Console.WriteLine($"Радиус: {Radius}");
+			Console.WriteLine($"Диаметр: {GetDiameter()}");
 			base.Info(e);
 		}
 	}
