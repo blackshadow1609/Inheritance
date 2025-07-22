@@ -31,8 +31,11 @@ namespace Geometry
 			Rectangle rectangle = new Rectangle(300, 200, 400, 50, 3, Color.AliceBlue);
 			rectangle.Info(e);
 
-			Circle circle = new Circle(75, 500, 50, 5, Color.Yellow);
+			Circle circle = new Circle(75, 500, 50, 3, Color.Yellow);
 			circle.Info(e);
+
+			EquilateralTriangle e_triangle = new EquilateralTriangle(100, 500, 400, 3, Color.Green);
+			e_triangle.Info(e);
 
 		}
 		[DllImport("kernel32.dll")]

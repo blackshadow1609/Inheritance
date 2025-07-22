@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Geometry
@@ -30,7 +31,25 @@ namespace Geometry
 		}
 		public override double GetPerimeter()
 		{
-			return;
+			return Side * 3;
+		}
+		public override void Draw(PaintEventArgs e)
+		{
+			Pen pen = new Pen(Color, LineWidth);
+			Point[] vertex = new Point[]
+			{
+				new Point(StartX, StartY + (int)Side),
+				new Point(StartX + (int)Side, StartY + (int)Side),
+				new Point(StartX + (int)Side / 2, StartY + (int)Side - (int)GetHeight()),
+			};
+			e.Graphics.DrawPolygon(pen, vertex);
+		}
+		public override void Info(PaintEventArgs e)
+		{
+			Console.WriteLine();
+			Console.WriteLine(GetType());
+			Console.WriteLine($"Длина стороны: {Side}");
+			base.Info(e);
 		}
 	}
 }
