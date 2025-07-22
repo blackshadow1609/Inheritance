@@ -13,19 +13,27 @@ namespace Geometry
 	{
 		static void Main(string[] args)
 		{
+			
 			IntPtr hwnd = GetConsoleWindow();
 			Graphics graphics = Graphics.FromHwnd(hwnd);
-			Rectangle window_rect = new Rectangle
+			System.Drawing.Rectangle window_rect = new System.Drawing.Rectangle
 				(
 				Console.WindowLeft, Console.WindowTop,
 				Console.WindowWidth, Console.WindowHeight
 				);
 			PaintEventArgs e = new PaintEventArgs(graphics, window_rect);
-			e.Graphics.DrawRectangle(new Pen(Color.Green, 2), 500, 500, 100, 100);
+			//e.Graphics.DrawRectangle(new Pen(Color.Green, 2), 500, 500, 100, 100);
 
 			//Shape shape = new Shape();	//Невозможно создать экземпляр абстрактного класса;
-			Square square = new Square(10, Color.Red);
-			square.Info();
+			Square square = new Square(2000, 300, 0, 152,  Color.Red);
+			square.Info(e);
+
+			Rectangle rectangle = new Rectangle(300, 200, 400, 50, 3, Color.AliceBlue);
+			rectangle.Info(e);
+
+			Circle circle = new Circle(75, 500, 50, 5, Color.Yellow);
+			circle.Info(e);
+
 		}
 		[DllImport("kernel32.dll")]
 		public static extern IntPtr GetConsoleWindow();
