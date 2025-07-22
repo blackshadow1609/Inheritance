@@ -34,6 +34,15 @@ namespace Geometry
 			Circle circle = new Circle(75, 500, 50, 5, Color.Yellow);
 			circle.Info(e);
 
+			EquilateralTriangle equilateral = new EquilateralTriangle(100, 200, 200, 2, Color.Blue);
+			equilateral.Info(e);
+
+			RightTriangle right = new RightTriangle(120, 80, 400, 200, 1, Color.Green);
+			right.Info(e);
+
+			IsoscelesTriangle isosceles = new IsoscelesTriangle(150, 100, 600, 200, 3, Color.Orange);
+			isosceles.Info(e);
+
 		}
 		[DllImport("kernel32.dll")]
 		public static extern IntPtr GetConsoleWindow();
