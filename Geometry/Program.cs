@@ -27,22 +27,22 @@ namespace Geometry
 #if ABSTRACT_BASE_CLASS
 
 			//Shape shape = new Shape();	//Невозможно создать экземпляр абстрактного класса;
-			Square square = new Square(2000, 300, 0, 152, Color.Red);
+			Square square = new Square(300, 300, 100, 3, Color.Red);
 			square.Info(e);
 
-			Rectangle rectangle = new Rectangle(300, 200, 400, 50, 3, Color.AliceBlue);
+			Rectangle rectangle = new Rectangle(300, 100, 300, 200, 3, Color.AliceBlue);
 			rectangle.Info(e);
 
-			Circle circle = new Circle(75, 500, 50, 3, Color.Yellow);
+			Circle circle = new Circle(100, 400, 200, 3, Color.Yellow);
 			circle.Info(e);
 
-			EquilateralTriangle e_triangle = new EquilateralTriangle(100, 500, 400, 3, Color.Green);
+			EquilateralTriangle e_triangle = new EquilateralTriangle(200, 400, 200, 3, Color.Green);
 			e_triangle.Info(e); 
 #endif
 
 			Shape[] shapes = new Shape[]
 				{
-					new Square(300, 300, 100, 3, Color.Red),
+					new Square(300, 300, 100, 3, Color.Red),							//исправленные координаты
 					new Rectangle(300, 100, 300, 200, 3, Color.AliceBlue),
 					new Circle(100, 400, 200, 3, Color.Yellow),
 					new EquilateralTriangle(200, 400, 200, 3, Color.Green)
